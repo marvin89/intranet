@@ -1,0 +1,55 @@
+body {
+	/*background: url("images/bg.png");*/
+}
+
+.opacity8 {
+	opacity: 0.8;
+}
+
+#landing {
+	margin-top: 150px;
+	text-align: center;
+	position: relative;
+	margin-left: 240px;
+}
+
+#landing .hover-here {
+	background: url("images/hover-here.png") no-repeat;
+	width: 290px;
+	height: 46px;
+	position: absolute;
+	top: -100px;
+	left: 20%;
+	display: none;
+}
+
+#landing .logo {
+	background: url("images/logo.png") no-repeat;
+	width: 375px;
+	height: 210px;
+	display: inline-block;
+	padding: 20px 0px;
+}
+
+#landing .loginControls {
+	display: none;
+	height: 290px;
+	margin-top: -290px;
+}
+
+#landing .overlay {
+	background: #eff0f2;
+	position: absolute;
+	height: 290px;
+	left: 0px; 
+	top: -40px;
+	margin: 0px;
+	border-radius: 10px;
+}
+
+#landing #signinButton {
+	display: inline-block;
+	position: absolute;
+	top: 40%;
+	left: 30%;
+}
