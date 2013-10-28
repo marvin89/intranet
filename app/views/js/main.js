@@ -10,6 +10,12 @@
 				});
 			});	
 		});
+		
+		/* Logout */
+		$('a[href=logout]').click(function(e){
+			e.preventDefault();
+			disconnectUser($.cookie('access_token'));
+		});
 				
 	});
 	

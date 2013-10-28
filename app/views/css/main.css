@@ -53,3 +53,42 @@ body {
 	top: 40%;
 	left: 30%;
 }
+
+#main-menu .navbar-inner,
+#main-menu.navbar .nav > li:first-child > a {
+	border-radius: 0px;
+}
+
+#main-menu.navbar .nav > li:first-child > a:hover {
+	padding-left: 20px;
+}
+
+#main-menu.navbar .nav li.userInfo a {
+	border: none;
+}
+
+#main-menu.navbar .nav li.userInfo .fui-user {
+	margin-right: 5px;
+}
+
+#main-menu.navbar .nav li.userInfo .details {
+	padding: 10px;
+	overflow: hidden;
+}
+
+#main-menu.navbar .nav li.userInfo .details img {
+	float: left;
+	margin-right: 10px;
+}
+
+#main-menu.navbar .nav li.userInfo .details dl {
+	color: white;
+	font-size: 11px;
+	margin: 0px;
+	float: left;
+}
+
+#main-menu.navbar .nav li.userInfo .details dl dt {
+	line-height: 1.5em;	
+	font-weight: normal;
+}

@@ -1,10 +1,5 @@
 <?php
-	if (Session::has('uid')) {
-		$uid = Session::get('uid');
-		$currentUser = User::where('uid','=',$uid)->first();
-		$fullName = $currentUser->givenName.' '.$currentUser->familyName;
-		$image = $currentUser->image;
-	}
+	include ('utils/macros.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +10,7 @@
             eeStec Intranet
             @show
         </title>
-
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
         <!-- CSS are placed here -->
         <link href="css/bootstrap.css" rel="stylesheet">
 	    <link href="css/flat-ui.css" rel="stylesheet">
@@ -25,16 +20,49 @@
     </head>
 
     <body>
+        <!-- Menu -->
+        <div class="navbar navbar-inverse navbar-static-top" id="main-menu">
+	    	<div class="navbar-inner">
+		    	<div class="container">
+			    	<ul class="nav span12">
+			    		{{ HTML::nav_link('home', 'Home') }}
+			    		{{ HTML::nav_link('departments', 'Departments', array(
+			    				'departments/pr' => 'Public Relations',
+			    				'departments/hr' => 'Human Resources',
+			    				'departments/fr' => 'Fund Raising'
+			    			) 
+			    		) }}
+			    		{{ HTML::nav_link('projects', 'Projects') }}
+			    		<li class="pull-right userInfo">
+			    			<a href="profile/{{ $user->uid }}">
+			    				<div class="fui-user"></div>{{ $user->givenName }} {{ $user->familyName }}
+			    			</a>
+			    			<ul>
+				    			<li>
+				    				<div class="details">
+					    				<img width="50" src="{{ $user->image }}" alt="{{ $user->givenName }} {{ $user->familyName }}" />
+					    				<dl>
+						    				<dt>{{ $user->givenName }} {{ $user->familyName }}</dt>
+						    				<dt>{{ $user->email }}</dt>
+						    				<dt>{{ $user->birthday }}</dt>
+					    				</dl>
+					    				<div class="span1 pull-right">
+						    				<a href="logout" class="btn btn-danger btn-block">Logout</a>
+					    				</div>
+				    				</div>
+				    			</li>
+			    			</ul>
+			    		</li>
+			    	</ul>	
+		    	</div>	
+	    	</div>    
+        </div>
+        
         <!-- Container -->
         <div class="container">
 			
             <!-- Content -->
             @yield('content')
-            
-            <div class="tile">
-	            <h2><?php echo $fullName; ?></h2>
-	            <img src="<?php echo $image; ?>" alt="<?php echo $fullName; ?>" />
-            </div>
 
         </div>
 
@@ -49,6 +77,7 @@
 	    <script src="js/jquery.tagsinput.js"></script>
 	    <script src="js/jquery.placeholder.js"></script>
 	    <script src="js/jquery.stacktable.js"></script>
+	    <script src="js/jquery.cookie.js"></script>
 	    <script src="js/main.js" type="text/javascript"></script>
 	    
     </body>

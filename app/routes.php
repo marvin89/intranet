@@ -12,7 +12,16 @@
 */
 
 Route::get('/', 'HomeController@landing');
-Route::get('home', checkLogin('HomeController@home'));
+Route::group(array('before' => 'checkLogin'), function()
+{
+    Route::get('home', 'HomeController@home');
+});
+
+
+Route::filter('checkLogin', function()
+{
+    if (!isset($_COOKIE['access_token'])) return Redirect::to('/');
+});
 
 Route::post('checkUser', function(){
 	$uid = Input::get('uid');
@@ -29,10 +38,6 @@ Route::post('checkUser', function(){
 	}
 	Session::put('uid',$uid);
 });
-
-function checkLogin($action) {
-	return !isset($_COOKIE['G_AUTHUSER_H1'])?'HomeController@landing':$action;
-}
 
 
 

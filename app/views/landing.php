@@ -14,6 +14,7 @@
 		})();
     </script>
     <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/google-actions.js" type="text/javascript"></script>
 </head>
 <body>

@@ -3,6 +3,7 @@ function signinCallback(authResult) {
     // Successfully authorized
     // Hide the sign-in button now that the user is authorized, for example:
     //document.getElementById('signinButton').setAttribute('style', 'display: none');
+    $.cookie('access_token', authResult['access_token'], { expires: 3 });
     $.get(
     	'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&key=AIzaSyB6WmrURVt8hsDvKme1URxS6JYPK_mX0K0&access_token='+authResult['access_token'],
     	function(userProfile){ 
@@ -47,6 +48,8 @@ function disconnectUser(access_token) {
     contentType: "application/json",
     dataType: 'jsonp',
     success: function(nullResponse) {
+      $.removeCookie('access_token');
+      window.location = '/intranet';
       // Do something now that user is disconnected
       // The response is always undefined.
     },

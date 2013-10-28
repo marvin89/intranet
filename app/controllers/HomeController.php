@@ -22,7 +22,8 @@ class HomeController extends BaseController {
 
 	public function home()
 	{
-		return View::make('home');
+		$user = User::where('uid','=',Session::get('uid'))->first();
+		return View::make('home', array('user'=>$user));
 	}
 
 }
